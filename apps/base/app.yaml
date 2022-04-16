@@ -10,9 +10,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    directory:
-      jsonnet: {}
-      recurse: true
     path: apps
     repoURL: https://github.com/dadav/argocd-tests.git
     targetRevision: main
