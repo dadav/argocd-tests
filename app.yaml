@@ -1,0 +1,23 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applications
+spec:
+  generators:
+    - list:
+        elements:
+          - stage: dev
+          - stage: prod
+  template:
+    metadata:
+      name: 'argo-app-{{stage}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/dadav/argocd-tests.git
+        targetRevision: main
+        path: 'pipelines/{{stage}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'mydeployment-{{stage}}'
