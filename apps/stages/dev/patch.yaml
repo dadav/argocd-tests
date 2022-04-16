@@ -3,6 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp
+  namespace: argocd
 spec:
   source:
     path: pipelines/dev
